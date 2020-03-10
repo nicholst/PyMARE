@@ -259,7 +259,7 @@ class SampleSizeBasedLikelihoodEstimator(BaseEstimator):
             sigma2 = 0
         w = 1 / (tau2 + sigma2 / n)
         R = y - X.dot(beta)
-        return 0.5 * (np.log(w).sum() + (R * w * R).sum())
+        return -0.5 * (np.log(w).sum() - (R * w * R).sum())
 
     def _reml_nll(self, theta, y, n, X):
         """ REML negative log-likelihood for meta-regression model. """
